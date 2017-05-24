@@ -63,6 +63,8 @@ namespace WebCam
                     camera1Combo.Items.Add( cameraName );
                     
                 }
+              camera1Combo.Items.Add("2 : WebCam GG-321");
+                camera1Combo.Items.Add("3 : WebCam SC-01DCL32219N");
 
                 // check cameras count
                
@@ -98,7 +100,7 @@ namespace WebCam
             stopButton.Enabled = true;
         }
 
-        // On "Stop" button click
+        // On "Stop" button clickpla
         private void stopButton_Click( object sender, EventArgs e )
         {
            // if (bitmap != null)
@@ -154,6 +156,8 @@ namespace WebCam
            // image = reader.GetNextFrame();
             Image<Bgr, Byte> tempImage = new Image<Bgr, Byte>(image);
             var Face = faceCascade.DetectMultiScale(tempImage);
+         
+            
             foreach (var face in Face)
             {
 
@@ -218,6 +222,28 @@ namespace WebCam
         }
 
         private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+       
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Connect(object sender, EventArgs e)
+        {
+
+        }
+
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }
