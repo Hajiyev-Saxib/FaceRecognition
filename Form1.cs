@@ -20,6 +20,7 @@ using Emgu.CV.CvEnum;
 using Emgu.CV.VideoSurveillance;
 using Emgu.CV.Cvb;
 using Emgu.CV.UI;
+using Emgu.CV.Face;
 
 namespace WebCam
 {
@@ -32,13 +33,21 @@ namespace WebCam
         // stop watch for measuring fps
         private Stopwatch stopWatch = null;
         private CascadeClassifier faceCascade;
+        FaceRecognition faceRecog;
+        String[] mas= {"Unknow","Чел 1 ","Чел 2 ","Чел 3 ","Чел 4 ","Чел 5 "," Gadjiev Saxib 21 year old, " };
         public Form1( )
         {
+
             //reader = new AVIReader();
             //reader.Open("123.avi");
             //Capture 
+            faceRecog = new FaceRecognition();
             InitializeComponent( );
              faceCascade = new CascadeClassifier("haarcascade_frontalface_default.xml");
+        //  button2.Enabled = false;
+        //   button3.Enabled = false;
+            // buttonLearn.Enabled = false;
+             LBPHFaceRecognizer recognizer = new LBPHFaceRecognizer(1,8,8,8,123);
              
 
             camera1FpsLabel.Text = string.Empty;
@@ -63,10 +72,9 @@ namespace WebCam
                     camera1Combo.Items.Add( cameraName );
                     
                 }
-              camera1Combo.Items.Add("2 : WebCam GG-321");
-                camera1Combo.Items.Add("3 : WebCam SC-01DCL32219N");
-
-                // check cameras count
+             //camera1Combo.Items.Add("2 : WebCam GG-321");
+             //camera1Combo.Items.Add("3 : WebCam SC-01DCL32219N");
+             // check cameras count
                
                 camera1Combo.SelectedIndex = 0;
             }
@@ -154,14 +162,31 @@ namespace WebCam
         private void playerControl_NewFrame(object sender, ref Bitmap image)
         {
            // image = reader.GetNextFrame();
-            Image<Bgr, Byte> tempImage = new Image<Bgr, Byte>(image);
-            var Face = faceCascade.DetectMultiScale(tempImage);
-         
-            
+            Image<Gray, Byte> tempImage = new Image<Gray, Byte>(image);
+         //   Mat sharp = new Mat(m);
+            var Face = faceCascade.DetectMultiScale(tempImage, 1.1, 6, new Size(90, 90));
+            FaceRecognizer.PredictionResult k;
+            int f;
+            Font drawFont = new Font("Arial", 20);
+            SolidBrush drawBrush = new SolidBrush(Color.White);
             foreach (var face in Face)
-            {
-
+            { 
                 Graphics.FromImage(image).DrawRectangle(new Pen(Brushes.Black, 5), face);
+                if (flag == true)
+                {
+                    k = faceRecog.Recognition(tempImage.Copy(face));
+                    if (k.Distance > 75)
+                    {
+                        f = 0;
+                        drawBrush = new SolidBrush(Color.Red);
+                    }
+                    else
+                        f = k.Label;
+                    PointF drawPoint = new PointF(face.X, face.Y-30);
+                Graphics.FromImage(image).DrawString(mas[f]+k.Distance, drawFont, drawBrush,drawPoint);
+                }
+               
+               
 
             }
            
@@ -243,9 +268,25 @@ namespace WebCam
 
         }
 
-        private void button4_Click(object sender, EventArgs e)
+        private void groupBox1_Enter(object sender, EventArgs e)
         {
 
+        }
+
+       
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+        bool flag = false;
+        private void CLickForLearn(object sender, EventArgs e)
+        {
+            WaitInfo.Text = "" + "wait/ system learning";
+
+            faceRecog.FaceLearn();
+            flag = true;
+            WaitInfo.Text = "" + "system is ready";
         }
        // public Form1()
       //  {

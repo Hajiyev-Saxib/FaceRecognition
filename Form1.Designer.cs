@@ -39,28 +39,25 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.WaitInfo = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonLearn = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.OldBox = new System.Windows.Forms.TextBox();
+            this.SurnameBox = new System.Windows.Forms.TextBox();
+            this.NameBox = new System.Windows.Forms.TextBox();
+            this.IDBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.textIP = new System.Windows.Forms.TextBox();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.IDBox = new System.Windows.Forms.TextBox();
-            this.NameBox = new System.Windows.Forms.TextBox();
-            this.SurnameBox = new System.Windows.Forms.TextBox();
-            this.OldBox = new System.Windows.Forms.TextBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.ButJournal = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // videoSourcePlayer1
@@ -83,7 +80,8 @@
             this.groupBox1.Size = new System.Drawing.Size(342, 315);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Camera 1";
+            this.groupBox1.Text = "CAMERA";
+            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // camera1FpsLabel
             // 
@@ -131,7 +129,7 @@
             // panel1
             // 
             this.panel1.Controls.Add(this.tabControl1);
-            this.panel1.Location = new System.Drawing.Point(453, 30);
+            this.panel1.Location = new System.Drawing.Point(368, 29);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(434, 328);
             this.panel1.TabIndex = 6;
@@ -139,8 +137,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(3, 3);
+            this.tabControl1.Location = new System.Drawing.Point(0, 3);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(491, 325);
@@ -148,6 +145,10 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.WaitInfo);
+            this.tabPage1.Controls.Add(this.label8);
+            this.tabPage1.Controls.Add(this.textBox1);
+            this.tabPage1.Controls.Add(this.buttonLearn);
             this.tabPage1.Controls.Add(this.label6);
             this.tabPage1.Controls.Add(this.button3);
             this.tabPage1.Controls.Add(this.button2);
@@ -159,9 +160,6 @@
             this.tabPage1.Controls.Add(this.label4);
             this.tabPage1.Controls.Add(this.label3);
             this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Controls.Add(this.button1);
-            this.tabPage1.Controls.Add(this.textIP);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -169,6 +167,97 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Controll Page";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // WaitInfo
+            // 
+            this.WaitInfo.AutoSize = true;
+            this.WaitInfo.Location = new System.Drawing.Point(306, 264);
+            this.WaitInfo.Name = "WaitInfo";
+            this.WaitInfo.Size = new System.Drawing.Size(85, 13);
+            this.WaitInfo.TabIndex = 17;
+            this.WaitInfo.Text = "System no ready";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(21, 188);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(84, 13);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Images directory";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(117, 182);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 15;
+            // 
+            // buttonLearn
+            // 
+            this.buttonLearn.Location = new System.Drawing.Point(306, 224);
+            this.buttonLearn.Name = "buttonLearn";
+            this.buttonLearn.Size = new System.Drawing.Size(75, 23);
+            this.buttonLearn.TabIndex = 14;
+            this.buttonLearn.Text = "learn";
+            this.buttonLearn.UseVisualStyleBackColor = true;
+            this.buttonLearn.Click += new System.EventHandler(this.CLickForLearn);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(114, 24);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(111, 13);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "data base  connected";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(306, 98);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 12;
+            this.button3.Text = "delete";
+            this.button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(306, 68);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 11;
+            this.button2.Text = "add";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // OldBox
+            // 
+            this.OldBox.Location = new System.Drawing.Point(117, 143);
+            this.OldBox.Name = "OldBox";
+            this.OldBox.Size = new System.Drawing.Size(100, 20);
+            this.OldBox.TabIndex = 10;
+            // 
+            // SurnameBox
+            // 
+            this.SurnameBox.Location = new System.Drawing.Point(117, 116);
+            this.SurnameBox.Name = "SurnameBox";
+            this.SurnameBox.Size = new System.Drawing.Size(100, 20);
+            this.SurnameBox.TabIndex = 9;
+            this.SurnameBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            // 
+            // NameBox
+            // 
+            this.NameBox.Location = new System.Drawing.Point(117, 90);
+            this.NameBox.Name = "NameBox";
+            this.NameBox.Size = new System.Drawing.Size(100, 20);
+            this.NameBox.TabIndex = 8;
+            // 
+            // IDBox
+            // 
+            this.IDBox.Location = new System.Drawing.Point(117, 65);
+            this.IDBox.Name = "IDBox";
+            this.IDBox.Size = new System.Drawing.Size(100, 20);
+            this.IDBox.TabIndex = 7;
             // 
             // label5
             // 
@@ -206,125 +295,11 @@
             this.label2.TabIndex = 3;
             this.label2.Text = "ID";
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(29, 20);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 13);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "IP addres forDB";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(306, 15);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "connect";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Connect);
-            // 
-            // textIP
-            // 
-            this.textIP.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.textIP.Location = new System.Drawing.Point(117, 17);
-            this.textIP.Name = "textIP";
-            this.textIP.Size = new System.Drawing.Size(186, 20);
-            this.textIP.TabIndex = 0;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.ButJournal);
-            this.tabPage2.Controls.Add(this.label7);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(483, 299);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Journal";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // IDBox
-            // 
-            this.IDBox.Location = new System.Drawing.Point(117, 65);
-            this.IDBox.Name = "IDBox";
-            this.IDBox.Size = new System.Drawing.Size(100, 20);
-            this.IDBox.TabIndex = 7;
-            // 
-            // NameBox
-            // 
-            this.NameBox.Location = new System.Drawing.Point(117, 90);
-            this.NameBox.Name = "NameBox";
-            this.NameBox.Size = new System.Drawing.Size(100, 20);
-            this.NameBox.TabIndex = 8;
-            // 
-            // SurnameBox
-            // 
-            this.SurnameBox.Location = new System.Drawing.Point(117, 116);
-            this.SurnameBox.Name = "SurnameBox";
-            this.SurnameBox.Size = new System.Drawing.Size(100, 20);
-            this.SurnameBox.TabIndex = 9;
-            this.SurnameBox.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
-            // 
-            // OldBox
-            // 
-            this.OldBox.Location = new System.Drawing.Point(117, 143);
-            this.OldBox.Name = "OldBox";
-            this.OldBox.Size = new System.Drawing.Size(100, 20);
-            this.OldBox.TabIndex = 10;
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(306, 68);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 11;
-            this.button2.Text = "add";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(306, 98);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 12;
-            this.button3.Text = "delete";
-            this.button3.UseVisualStyleBackColor = true;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(138, 40);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(129, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "Data Base not connected";
-            // 
-            // label7
-            // 
-            this.label7.Location = new System.Drawing.Point(54, 57);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(311, 190);
-            this.label7.TabIndex = 0;
-            this.label7.Text = "label7";
-            // 
-            // ButJournal
-            // 
-            this.ButJournal.Location = new System.Drawing.Point(317, 18);
-            this.ButJournal.Name = "ButJournal";
-            this.ButJournal.Size = new System.Drawing.Size(75, 23);
-            this.ButJournal.TabIndex = 1;
-            this.ButJournal.Text = "refresh";
-            this.ButJournal.UseVisualStyleBackColor = true;
-            this.ButJournal.Click += new System.EventHandler(this.button4_Click);
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(884, 369);
+            this.ClientSize = new System.Drawing.Size(812, 369);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
@@ -332,7 +307,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "Form1";
-            this.Text = "Two Cameras Test";
+            this.Text = "WebCamApp";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -340,7 +315,6 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -358,10 +332,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textIP;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
@@ -373,8 +343,10 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button ButJournal;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Button buttonLearn;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Label WaitInfo;
     }
 }
 
